@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth scroll-pt-24">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -122,6 +122,7 @@
             background: #10B981; /* Emerald */
             transform: translateZ(40px);
             box-shadow: 0 0 25px #10B981;
+            z-index: 50; /* Memastikan bangunan di depan saat membesar */
         }
         .iso-building:hover::before {
             background: #059669; /* Darker Emerald */
@@ -188,6 +189,13 @@
                 </div>
                 <h1 class="text-2xl font-extrabold text-sapphire tracking-tight">SolusiWeb<span class="text-emerald">.online</span></h1>
             </div>
+            
+            <!-- Mobile CTA Nav -->
+            <div class="flex md:hidden">
+                <a href="#tanya" class="px-5 py-2 rounded-full shadow-neo text-sapphire font-semibold text-sm hover:shadow-neo-inner transition-shadow duration-300">Hubungi</a>
+            </div>
+
+            <!-- Desktop Nav -->
             <div class="hidden md:flex gap-4">
                 <a href="#cara-kerja" class="px-6 py-2 rounded-full text-gray-700 font-semibold hover:text-sapphire transition-colors duration-300">
                     Cara Kerja
@@ -506,7 +514,7 @@
                         <li class="flex items-center gap-3"><span class="text-emerald font-bold">✓</span> Tombol Chat WhatsApp</li>
                         <li class="flex items-center gap-3"><span class="text-emerald font-bold">✓</span> Integrasi Google Maps</li>
                     </ul>
-                    <a href="https://wa.me/628123456789?text=Halo%20SolusiWeb,%20saya%20tertarik%20dengan%20Paket%20Starter..." class="w-full block text-center py-3 rounded-xl shadow-neo text-sapphire font-bold hover:shadow-neo-inner transition-shadow duration-300">Pilih Starter</a>
+                    <a href="https://wa.me/6282310941608?text=Halo%20SolusiWeb,%20saya%20tertarik%20dengan%20Paket%20Starter..." class="w-full block text-center py-3 rounded-xl shadow-neo text-sapphire font-bold hover:shadow-neo-inner transition-shadow duration-300">Pilih Starter</a>
                 </div>
 
                 <!-- Paket Pro (Highlighted) -->
@@ -524,7 +532,7 @@
                         <li class="flex items-center gap-3"><span class="text-emerald font-bold">✓</span> Gallery Foto Usaha</li>
                         <li class="flex items-center gap-3"><span class="text-emerald font-bold">✓</span> Bebas Revisi Minor 1 Minggu</li>
                     </ul>
-                    <a href="https://wa.me/628123456789?text=Halo%20SolusiWeb,%20saya%20tertarik%20dengan%20Paket%20Pro..." class="w-full block text-center py-3 rounded-xl bg-emerald text-white font-bold hover:bg-green-600 shadow-md transition-colors duration-300">Pilih Pro</a>
+                    <a href="https://wa.me/6282310941608?text=Halo%20SolusiWeb,%20saya%20tertarik%20dengan%20Paket%20Pro..." class="w-full block text-center py-3 rounded-xl bg-emerald text-white font-bold hover:bg-green-600 shadow-md transition-colors duration-300">Pilih Pro</a>
                 </div>
             </div>
             
