@@ -1,1 +1,453 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization & Meta Tags -->
+    <title>SolusiWeb.online - Markas Digital Eksklusif UMKM</title>
+    <meta name="description" content="Jasa pembuatan website profesional untuk UMKM Indonesia. Bebas biaya sewa server bulanan, tampil di Google, dan tingkatkan penjualan Anda bersama SolusiWeb.online.">
+    <meta name="keywords" content="jasa website umkm, buat website murah, website tanpa hosting bulanan, solusi digital umkm, jasa landing page">
+    <meta name="author" content="SolusiWeb">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+    
+    <!-- Open Graph / WhatsApp Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://solusiweb.online/">
+    <meta property="og:title" content="SolusiWeb.online - Markas Digital UMKM">
+    <meta property="og:description" content="Bawa bisnis lokal Anda ke level profesional dengan website bebas biaya server bulanan. Konsultasi gratis sekarang!">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80">
 
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Konfigurasi Warna Khusus Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: '#10B981',
+                        mint: '#A7F3D0',
+                        sapphire: '#0F52BA',
+                        accent: '#F97316',
+                        bgneo: '#e0e5ec', // Warna dasar Neomorphism
+                    },
+                    boxShadow: {
+                        'neo': '9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5)',
+                        'neo-inner': 'inset 6px 6px 10px 0 rgba(163, 177, 198, 0.7), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.8)',
+                        'neo-sm': '5px 5px 10px rgb(163,177,198,0.5), -5px -5px 10px rgba(255,255,255, 0.6)',
+                        'neo-glow': '0 0 20px #10B981',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS untuk Animasi 3D dan Neomorphism khusus -->
+    <style>
+        body {
+            background-color: #e0e5ec;
+            color: #2d3748;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Heartbeat Animation for CTA */
+        .heartbeat {
+            animation: heartbeat 2s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+
+        /* Interactive 3D Isometric Map */
+        .iso-container {
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .iso-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            transform: rotateX(60deg) rotateZ(-45deg);
+            transform-style: preserve-3d;
+        }
+        .iso-building {
+            width: 70px;
+            height: 70px;
+            background: #cbd5e1;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            transform: translateZ(0);
+        }
+        /* Bagian depan bangunan 3D */
+        .iso-building::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: #94a3b8;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+            transition: all 0.5s ease;
+        }
+        /* Bagian samping bangunan 3D */
+        .iso-building::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 20px;
+            height: 100%;
+            background: #f1f5f9;
+            transform-origin: left;
+            transform: rotateY(90deg);
+            transition: all 0.5s ease;
+        }
+        
+        /* Efek Hover: Menyala (Online) */
+        .iso-building:hover {
+            background: #10B981; /* Emerald */
+            transform: translateZ(40px);
+            box-shadow: 0 0 25px #10B981;
+        }
+        .iso-building:hover::before {
+            background: #059669; /* Darker Emerald */
+            height: 60px;
+        }
+        .iso-building:hover::after {
+            background: #34D399; /* Mint */
+            width: 60px;
+        }
+
+        /* FAQ Accordion Styling */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        details[open] .accordion-content {
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 1rem;
+        }
+        details[open] summary .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Device Frame Mockup */
+        .device-frame {
+            border: 12px solid #e0e5ec;
+            border-radius: 2.5rem;
+            box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5), inset 4px 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            background: white;
+            position: relative;
+        }
+        .device-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 20px;
+            background: #e0e5ec;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-mint selection:text-sapphire">
+
+    <!-- Navbar Neomorphism -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-bgneo/80">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-full shadow-neo flex items-center justify-center text-emerald font-bold text-xl">
+                    S
+                </div>
+                <h1 class="text-2xl font-extrabold text-sapphire tracking-tight">SolusiWeb<span class="text-emerald">.online</span></h1>
+            </div>
+            <div class="hidden md:flex gap-4">
+                <a href="#cara-kerja" class="px-6 py-2 rounded-full text-gray-700 font-semibold hover:text-sapphire transition-colors duration-300">
+                    Cara Kerja
+                </a>
+                <a href="#harga" class="px-6 py-2 rounded-full text-gray-700 font-semibold hover:text-sapphire transition-colors duration-300">
+                    Harga
+                </a>
+                <a href="#tanya" class="px-6 py-2 rounded-full shadow-neo text-sapphire font-semibold hover:shadow-neo-inner transition-shadow duration-300">
+                    Hubungi Kami
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Visual Wow) -->
+    <section class="min-h-screen pt-28 pb-16 px-6 flex flex-col lg:flex-row items-center justify-center container mx-auto">
+        
+        <!-- Text Content -->
+        <div class="lg:w-1/2 text-center lg:text-left z-10">
+            <div class="inline-block px-4 py-1 rounded-full shadow-neo-sm text-emerald font-bold text-sm mb-6 tracking-wide uppercase">
+                Era Baru Digital UMKM
+            </div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-800 leading-tight mb-6">
+                Peta Google Bapak/Ibu Sepi? <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-sapphire to-emerald">Markas Digital Anda Dimulai Di Sini.</span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                Ditemukan pelanggan saat mereka membutuhkan. Kami membuatkan website premium dan eksklusif untuk bisnis lokal Anda tanpa biaya sewa server bulanan yang memberatkan.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+                <a href="#harga" class="px-8 py-4 rounded-xl shadow-neo bg-emerald text-white font-bold text-lg hover:shadow-neo-inner hover:bg-green-600 transition-all duration-300 flex items-center justify-center gap-2">
+                    Mulai Transformasi
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                </a>
+                <a href="#showcase" class="px-8 py-4 rounded-xl shadow-neo text-sapphire font-bold text-lg hover:shadow-neo-inner transition-all duration-300 flex items-center justify-center">
+                    Lihat Portofolio
+                </a>
+            </div>
+        </div>
+
+        <!-- 3D Interactive Map Graphic -->
+        <div class="lg:w-1/2 w-full mt-16 lg:mt-0 iso-container">
+            <div class="relative">
+                <div class="absolute -inset-10 bg-mint opacity-20 blur-3xl rounded-full"></div>
+                <div class="iso-grid">
+                    <!-- 9 Buildings representing local businesses -->
+                    <div class="iso-building group">
+                        <span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold text-emerald bg-white px-2 py-1 rounded shadow-neo">Cafe</span>
+                    </div>
+                    <div class="iso-building group" style="transition-delay: 0.1s"></div>
+                    <div class="iso-building group">
+                        <span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold text-emerald bg-white px-2 py-1 rounded shadow-neo">Klinik</span>
+                    </div>
+                    <div class="iso-building group" style="transition-delay: 0.2s"></div>
+                    <div class="iso-building group">
+                        <span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold text-emerald bg-white px-2 py-1 rounded shadow-neo">Bisnis Anda?</span>
+                    </div>
+                    <div class="iso-building group" style="transition-delay: 0.1s"></div>
+                    <div class="iso-building group">
+                        <span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold text-emerald bg-white px-2 py-1 rounded shadow-neo">Bengkel</span>
+                    </div>
+                    <div class="iso-building group" style="transition-delay: 0.3s"></div>
+                    <div class="iso-building group"></div>
+                </div>
+                <p class="text-center mt-12 text-gray-600 font-semibold text-sm animate-pulse">Arahkan kursor ke peta untuk menyalakan bisnis</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution (Metonimia Visual) -->
+    <section class="py-20 bg-bgneo px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-sapphire mb-4">Medsos Buat Cari Perhatian.<br>Website Buat <span class="text-emerald">Tutup Penjualan.</span></h2>
+                <p class="text-gray-700 max-w-2xl mx-auto font-medium">Jangan pertaruhkan bisnis Anda hanya pada satu platform yang bisa mengubah aturannya kapan saja.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <!-- Bad: Medsos (Sewa) -->
+                <div class="p-8 rounded-3xl shadow-neo-inner flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full shadow-neo flex items-center justify-center mb-6 bg-red-50 text-red-500">
+                        <!-- Broken Ladder Icon -->
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l16 16" class="text-red-600"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Hanya Mengandalkan Medsos</h3>
+                    <ul class="text-gray-600 space-y-3 text-left w-full mt-4 font-medium">
+                        <li class="flex items-center gap-3"><span class="text-red-500 font-bold">✕</span> Status "Menyewa", rawan di-banned.</li>
+                        <li class="flex items-center gap-3"><span class="text-red-500 font-bold">✕</span> Pelanggan terdistraksi video & iklan kompetitor.</li>
+                        <li class="flex items-center gap-3"><span class="text-red-500 font-bold">✕</span> Sulit dicari di Google Search saat butuh mendesak.</li>
+                    </ul>
+                </div>
+
+                <!-- Good: Website (Milik Sendiri) -->
+                <div class="p-8 rounded-3xl shadow-neo bg-bgneo flex flex-col items-center text-center border border-white/40">
+                    <div class="w-24 h-24 rounded-full shadow-neo flex items-center justify-center mb-6 bg-mint text-sapphire">
+                        <!-- Lighthouse Icon -->
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2l-4 8h8l-4-8zM8 10v12h8V10M10 22h4"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v2m-3.5 1.5L7 4m10 1.5L18.5 4m-12 5H5m14 0h1.5" class="text-emerald"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-sapphire mb-3">Memiliki Website Sendiri</h3>
+                    <ul class="text-gray-600 space-y-3 text-left w-full mt-4 font-medium">
+                        <li class="flex items-center gap-3"><span class="text-emerald font-bold">✓</span> Aset Digital 100% Hak Milik Anda.</li>
+                        <li class="flex items-center gap-3"><span class="text-emerald font-bold">✓</span> Katalog rapi, fokus pada produk Anda saja.</li>
+                        <li class="flex items-center gap-3"><span class="text-emerald font-bold">✓</span> Terindeks Google, ditemukan pembeli tertarget.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase / Gallery -->
+    <section id="showcase" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">Desain Premium, <span class="text-sapphire">Hasil Maksimal</span></h2>
+                <p class="text-gray-700 font-medium">Beberapa prototype antarmuka yang siap diadaptasi untuk bisnis Anda.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                
+                <!-- Mockup 1: Cafe -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-[280px] h-[550px] device-frame mb-6 group-hover:-translate-y-3 transition-transform duration-500">
+                        <div class="device-notch"></div>
+                        <!-- Mockup Content -->
+                        <div class="w-full h-full bg-stone-900 text-stone-100 flex flex-col relative overflow-hidden">
+                            <div class="h-40 bg-stone-800 rounded-b-3xl flex items-center justify-center relative">
+                                <span class="text-4xl">☕</span>
+                                <h4 class="absolute bottom-4 left-4 font-bold text-xl">Kopi Senja</h4>
+                            </div>
+                            <div class="p-4 flex-1">
+                                <div class="w-full h-8 bg-stone-800 rounded mb-4"></div>
+                                <div class="w-3/4 h-4 bg-stone-700 rounded mb-2"></div>
+                                <div class="w-1/2 h-4 bg-stone-700 rounded mb-6"></div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="h-24 bg-stone-800 rounded-xl"></div>
+                                    <div class="h-24 bg-stone-800 rounded-xl"></div>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 h-12 bg-emerald rounded-full flex items-center justify-center font-bold">Pesan Meja</div>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-800">F&B / Restoran</h3>
+                </div>
+
+                <!-- Mockup 2: Klinik -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-[280px] h-[550px] device-frame mb-6 group-hover:-translate-y-3 transition-transform duration-500">
+                        <div class="device-notch"></div>
+                        <!-- Mockup Content -->
+                        <div class="w-full h-full bg-blue-50 text-blue-900 flex flex-col relative overflow-hidden">
+                            <div class="h-32 bg-white rounded-b-3xl shadow-sm flex items-end pb-4 px-4">
+                                <div>
+                                    <span class="text-2xl mb-1 block">🏥</span>
+                                    <h4 class="font-bold text-lg text-sapphire">Klinik Sehat</h4>
+                                </div>
+                            </div>
+                            <div class="p-4 flex-1 mt-2">
+                                <div class="w-full h-32 bg-white rounded-2xl shadow-sm mb-4"></div>
+                                <div class="flex gap-2 mb-4">
+                                    <div class="w-1/3 h-10 bg-blue-100 rounded-lg"></div>
+                                    <div class="w-1/3 h-10 bg-blue-100 rounded-lg"></div>
+                                    <div class="w-1/3 h-10 bg-blue-100 rounded-lg"></div>
+                                </div>
+                                <div class="w-full h-16 bg-white rounded-xl shadow-sm"></div>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 h-12 bg-sapphire text-white rounded-full flex items-center justify-center font-bold">Buat Janji Temu</div>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-800">Klinik & Jasa Profesional</h3>
+                </div>
+
+                <!-- Mockup 3: Bengkel -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-[280px] h-[550px] device-frame mb-6 group-hover:-translate-y-3 transition-transform duration-500">
+                        <div class="device-notch"></div>
+                        <!-- Mockup Content -->
+                        <div class="w-full h-full bg-gray-100 text-gray-800 flex flex-col relative overflow-hidden">
+                            <div class="h-48 bg-gray-800 rounded-br-[4rem] p-6 text-white flex flex-col justify-end">
+                                <span class="text-3xl mb-2 text-accent">🔧</span>
+                                <h4 class="font-black text-2xl uppercase italic">AutoFix</h4>
+                            </div>
+                            <div class="p-4 flex-1">
+                                <h5 class="font-bold mb-3">Layanan Kami</h5>
+                                <div class="space-y-3">
+                                    <div class="h-16 bg-white shadow-sm rounded-lg border-l-4 border-accent"></div>
+                                    <div class="h-16 bg-white shadow-sm rounded-lg border-l-4 border-gray-400"></div>
+                                    <div class="h-16 bg-white shadow-sm rounded-lg border-l-4 border-gray-400"></div>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 h-12 bg-accent text-white rounded-md flex items-center justify-center font-bold tracking-wider">PANGGIL MONTIR</div>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-800">Bengkel & Toko</h3>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimoni -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-sapphire mb-4">Apa Kata Mereka yang Sudah <span class="text-emerald">Go Digital?</span></h2>
+                <p class="text-gray-700 font-medium">Bergabunglah dengan pengusaha lokal lain yang sudah mempercayakan markas digitalnya pada kami.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-bgneo p-8 rounded-3xl shadow-neo border border-white/50 relative flex flex-col justify-between">
+                    <div>
+                        <div class="text-emerald text-5xl absolute top-4 right-6 opacity-30 font-serif">"</div>
+                        <p class="text-gray-700 italic mb-6 relative z-10 leading-relaxed">
+                            "Awalnya ragu karena biasanya bikin website itu mahal dan ada biaya bulanan. Semenjak pakai jasa SolusiWeb, pelanggan dari Google Maps langsung pada klik tombol WA di web. Prosesnya cepet banget!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-sapphire flex items-center justify-center text-white font-bold text-lg shadow-neo-sm">B</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Bapak Budi</h4>
+                            <p class="text-sm text-emerald font-semibold">Owner Bengkel Motor Maju</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 (Bapak Hendra) -->
+                <div class="bg-bgneo p-8 rounded-3xl shadow-neo border border-white/50 relative flex flex-col justify-between">
+                    <div>
+                        <div class="text-emerald text-5xl absolute top-4 right-6 opacity-30 font-serif">"</div>
+                        <p class="text-gray-700 italic mb-6 relative z-10 leading-relaxed">
+                            "Sebagai pemilik usaha F&B, saya meyakini bahwa rezeki memang sudah diatur sepenuhnya oleh Allah SWT. Namun, kita juga diperintahkan untuk berikhtiar dengan maksimal. Membangun website melalui SolusiWeb.online adalah salah satu bentuk usaha nyata saya dalam menjemput rezeki tersebut. Hasilnya luar biasa, operasional pesanan jadi lebih rapi dan pelanggan makin percaya."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-emerald flex items-center justify-center text-white font-bold text-lg shadow-neo-sm">H</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Bapak Hendra</h4>
+                            <p class="text-sm text-emerald font-semibold">Owner Usaha Kuliner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 (Ibu Siti) -->
+                <div class="bg-bgneo p-8 rounded-3xl shadow-neo border border-white/50 relative flex flex-col justify-between">
+                    <div>
+                        <div class="text-emerald text-5xl absolute top-4 right-6 opacity-30 font-serif">"</div>
+                        <p class="text-gray-700 italic mb-6 relative z-10 leading-relaxed">
+                            "Desainnya bener-bener elegan, nggak nyangka harganya sangat terjangkau buat UMKM. Enaknya lagi, nggak perlu pusing mikirin biaya server tiap bulan. Pokoknya terima beres dan langsung jualan."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-white font-bold text-lg shadow-neo-sm">S</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Ibu Siti</h4>
+                            <p class="text-sm text-emerald font-semibold">Owner Klinik Kecantikan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cara Kerja (Alur Pemesanan) -->
